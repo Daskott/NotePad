@@ -66,17 +66,18 @@ class Application extends Component{
     updatedNote.content = event.target.value;
     
     /**
-     * - update note using api call
-     * - then update application state
+     * - update application state
+     * - the update note using api call
      */
-    self.setState({savingNoteIndicator: "Saving..."});
+    updateNoteContent(self.state.selectedIndex, updatedNote.content);
+    self.setState({textAreaContent: updatedNote.content, savingNoteIndicator: "Saving..."});
+
     axios.put('/api/notes/'+updatedNote.id, updatedNote)
     .then(function (response) {
         if(!response.data.success)return;
-        
-        // auto save && update application state
-        updateNoteContent(self.state.selectedIndex, updatedNote.content);
-        self.setState({textAreaContent: updatedNote.content, savingNoteIndicator:""});
+
+        // auto save
+        self.setState({savingNoteIndicator:""});
     })
     .catch(function (error) {
         console.log("Error: ", error);
