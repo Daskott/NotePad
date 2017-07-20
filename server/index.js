@@ -11,7 +11,7 @@ app.use(bodyParser.json({limit: '5mb'}));
 app.use(apiRouter);
 app.use(staticRouter);
 
-//sync database modles, then start server
+sync database modles, then start server
 models.sequelize.sync().then(function () {
 	app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}!`);
