@@ -69,7 +69,7 @@ class Application extends Component{
      * - update application textArea
      * - then update selected note using api call
      */
-    updateNoteContent(self.state.selectedIndex, updatedNote.content);
+    updateNoteContent(self.state.selectedIndex, updatedNote.content.trim());
     self.setState({textAreaContent: updatedNote.content, savingNoteIndicator: "Saving..."});
 
     axios.put('/api/notes/'+updatedNote.id, updatedNote)
