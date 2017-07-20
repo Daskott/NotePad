@@ -9,6 +9,7 @@ body {
 .add-btn{color: #6D4C41;}
 .delete-btn{color: #6D4C41;}
 
+.no-margin{margin: 0px;}
 .padding-default{padding: 8px;}
 .margin-default{margin: 8px;}
 .margin-left{margin-left: 8px;}
@@ -69,6 +70,8 @@ a.note-item{
   min-height: 50px;
   border-radius: 0px;
 }
+
+a.note-item:link{font-weight: 900;}
 
 .active-note,
 a.note-item:active,

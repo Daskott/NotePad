@@ -20,7 +20,7 @@ const Note = props =>{
 
     return(
         <a href="#" className={"list-group-item note-item "+props.active} onClick={toggleListItem}>
-        {getContent()}
+            <h4><strong>{getContent()}</strong></h4>
         </a>
     );
 }
