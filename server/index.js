@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const staticRouter = require('./static');
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 8080;
 const bodyParser = require('body-parser');
 var apiRouter = require('./routes');
 var models = require('../models');
