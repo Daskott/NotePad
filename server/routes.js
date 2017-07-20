@@ -4,6 +4,7 @@ var express = require('express');
 var api = express.Router();
 var handler = require('./handler');
 
+// Setup api routes
 api.get('/api/notes', handler.getAllNotes);
 
 api.get('/api/notes/:id', handler.getNote);

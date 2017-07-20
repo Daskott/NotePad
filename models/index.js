@@ -9,14 +9,13 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
-// config.use_env_variable 
 if (process.env.CLEARDB_DATABASE_URL) {
   var sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL,{
     username:process.env.CLEARDB_DATABASE_USERNAME,
     password:process.env.CLEARDB_DATABASE_PASSWORD,
     database:process.env.CLEARDB_DATABASE,
     dialect: "mysql",
-    logging:  true //false
+    logging:  true
   });
 } else {
   var sequelize = new Sequelize(config.database, config.username, process.env.LOCAL_DATABASE_PASSWORD, config);

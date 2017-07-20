@@ -1,4 +1,24 @@
+/* ================================================
+  Fonts
+* ================================================ */
+
 @import url('https://fonts.googleapis.com/css?family=Lobster|Quicksand:400,700');
+
+/* ================================================
+  Globals
+* ================================================ */
+
+.no-margin{margin: 0px;}
+.padding-default{padding: 8px;}
+.margin-default{margin: 8px;}
+.margin-left{margin-left: 8px;}
+.margin-right{margin-right: 8px;}
+.margin-top-3x{margin-top:40px;}
+.list-group{border-radius: 0px;}
+
+/* ================================================
+  View components
+* ================================================ */
 
 body {
   background: #8D6E63; 
@@ -11,13 +31,6 @@ body {
 .add-btn{color: #6D4C41;}
 .delete-btn{color: #6D4C41;}
 
-.no-margin{margin: 0px;}
-.padding-default{padding: 8px;}
-.margin-default{margin: 8px;}
-.margin-left{margin-left: 8px;}
-.margin-right{margin-right: 8px;}
-.margin-top-3x{margin-top:40px;}
-.list-group{border-radius: 0px;}
 .toolbar{border-bottom: 1px solid #E0E0E0;}
 
 .header{

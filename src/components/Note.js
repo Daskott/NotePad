@@ -10,7 +10,7 @@ const Note = props =>{
     const getContent = ()=>{
         /**
          * - set note with a content, if any
-         * - else set content with placeholder -> "New Note"
+         * - else set content with placeholder -> "Blank"
          * - if content is > 10 chars, trim it 
          */
         var content = props.content? props.content: "Blank";

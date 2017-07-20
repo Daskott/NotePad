@@ -1,7 +1,9 @@
 var models = require('../models');
 var Note = models.Note;
 
-
+/**
+ * Handlers for for our api routes
+ */
 var handler = {
     getAllNotes: (request, response) => {
         Note.findAll({order: [['id','DESC']]})

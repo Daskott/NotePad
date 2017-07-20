@@ -66,8 +66,8 @@ class Application extends Component{
     updatedNote.content = event.target.value;
     
     /**
-     * - update application state
-     * - the update note using api call
+     * - update application textArea
+     * - then update selected note using api call
      */
     updateNoteContent(self.state.selectedIndex, updatedNote.content);
     self.setState({textAreaContent: updatedNote.content, savingNoteIndicator: "Saving..."});
