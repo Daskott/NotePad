@@ -15,10 +15,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "39511658",
-    "database": "notepad_production",
-    "host": "127.0.0.1",
+    "username": "afounrlebl5t2z83",
+    "password": "t0aj02ssi52mhfa6",
+    "database": "jawsdb-lively-35571",
+    "host": "a07yd3a6okcidwap.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }

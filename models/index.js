@@ -11,7 +11,7 @@ var db        = {};
 
 // config.use_env_variable 
 if (process.env.JAWSDB_MARIA_URL) {
-  var sequelize = new Sequelize(process.env.JAWSDB_MARIA_URL);
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);//new Sequelize(process.env.JAWSDB_MARIA_URL);
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
