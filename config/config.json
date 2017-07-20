@@ -9,16 +9,16 @@
   },
   "test": {
     "username": "root",
-    "password": "39511658",
+    "password": "",
     "database": "notepad_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "39511658",
+    "username":"root",
+    "password":"",
     "database": "notepad_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": true
   }
 }
