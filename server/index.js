@@ -12,8 +12,8 @@ app.use(apiRouter);
 app.use(staticRouter);
 
 //sync database modles, then start server
-// models.sequelize.sync().then(function () {
+models.sequelize.sync().then(function () {
 	app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}!`);
   });
-// });
+});
