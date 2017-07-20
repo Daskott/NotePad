@@ -10,8 +10,12 @@ var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
 // config.use_env_variable 
-if (process.env.JAWSDB_MARIA_URL) {
-  var sequelize = new Sequelize(process.env.JAWSDB_MARIA_URL);
+if (process.env.DATABASE_URL) {
+  var sequelize = new Sequelize(process.env.DATABASE_URL,{
+    dialect:  'postgres',
+    protocol: 'postgres',
+    logging:  true //false
+  });
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
