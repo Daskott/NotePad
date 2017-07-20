@@ -19,7 +19,7 @@ if (process.env.CLEARDB_DATABASE_URL) {
     logging:  true //false
   });
 } else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+  var sequelize = new Sequelize(config.database, config.username, process.env.LOCAL_DATABASE_PASSWORD, config);
 }
 
 fs
