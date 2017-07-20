@@ -173,33 +173,38 @@ class Application extends Component{
     ), this);
 
     return(
-      <div className="margin-top-3x content">
-        
-        <Toolbar onDelete={this.deleteSelectedNote} onAdd={this.addNewNote} savingNoteIndicator={this.state.savingNoteIndicator}/>
-        
-        <div className="SplitPane">
-          
-          {/* Notes */}
-            <ReactCSSTransitionGroup 
-                  component="div" 
-                  className="SplitPane-left list-group" 
-                  transitionName="slide" 
-                  transitionAppear={true}
-                  transitionAppearTimeout={500}
-                  transitionEnterTimeout={500} 
-                  transitionLeaveTimeout={500}>
-              {noteComponents}
-            </ReactCSSTransitionGroup>
+      <div className="margin-top-3x">
+        <div className="header">
+            <h1>Note Pad</h1>
+        </div>
 
-          {/* TextArea */}
-          <div className="SplitPane-right">
-            <textarea 
-                      className="text-content" 
-                      disabled={this.props.notes.length <= 0? true : false}
-                      placeholder={this.props.notes.length <= 0? "Create your first Note :)" : "Add Note"}
-                      value={this.state.textAreaContent}
-                      onChange={this.onTextAreaChange}>
-            </textarea>
+        <div className="content">
+          <Toolbar onDelete={this.deleteSelectedNote} onAdd={this.addNewNote} savingNoteIndicator={this.state.savingNoteIndicator}/>
+          
+          <div className="SplitPane">
+            
+            {/* Notes */}
+              <ReactCSSTransitionGroup 
+                    component="div" 
+                    className="SplitPane-left list-group" 
+                    transitionName="slide" 
+                    transitionAppear={true}
+                    transitionAppearTimeout={500}
+                    transitionEnterTimeout={500} 
+                    transitionLeaveTimeout={500}>
+                {noteComponents}
+              </ReactCSSTransitionGroup>
+
+            {/* TextArea */}
+            <div className="SplitPane-right">
+              <textarea 
+                        className="text-content" 
+                        disabled={this.props.notes.length <= 0? true : false}
+                        placeholder={this.props.notes.length <= 0? "Create your first Note :)" : "Add Note"}
+                        value={this.state.textAreaContent}
+                        onChange={this.onTextAreaChange}>
+              </textarea>
+            </div>
           </div>
 
         </div>
