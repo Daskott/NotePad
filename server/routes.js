@@ -5,14 +5,14 @@ var api = express.Router();
 var handler = require('./handler');
 
 // Setup api routes
-api.get('/api/notes', handler.getAllNotes);
+api.get('/api/notes/:start?/:limit?/:order?', handler.getAllNotes);
 
-api.get('/api/notes/:id', handler.getNote);
+api.get('/api/note/:id', handler.getNote);
 
-api.post('/api/notes/add', handler.addNote);
+api.post('/api/note/add', handler.addNote);
 
-api.put('/api/notes/:id', handler.updateNote);
+api.put('/api/note/:id', handler.updateNote);
 
-api.delete('/api/notes/:id', handler.deleteNote);
+api.delete('/api/note/:id', handler.deleteNote);
 
 module.exports = api;

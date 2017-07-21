@@ -72,7 +72,7 @@ class Application extends Component{
     updateNoteContent(self.state.selectedIndex, updatedNote.content.trim());
     self.setState({textAreaContent: updatedNote.content, savingNoteIndicator: "Saving..."});
 
-    axios.put('/api/notes/'+updatedNote.id, updatedNote)
+    axios.put('/api/note/'+updatedNote.id, updatedNote)
     .then(function (response) {
         if(!response.data.success)return;
 
@@ -101,7 +101,7 @@ class Application extends Component{
      * - add new note using api call
      * - then update the state of the application
      */
-    axios.post('/api/notes/add', {
+    axios.post('/api/note/add', {
         content: ""
     })
     .then(function (response) {
@@ -130,7 +130,7 @@ class Application extends Component{
      * - then update application state
      */
     const selectedNoteId = this.props.notes[selectedIndex].id;
-    axios.delete('/api/notes/'+selectedNoteId)
+    axios.delete('/api/note/'+selectedNoteId)
     .then(function (response) {
         if(!response.data.success)return;
         

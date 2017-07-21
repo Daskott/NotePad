@@ -14,8 +14,8 @@ A simple note pad application built with:
 And then deployed to Heroku: https://notepad-101.herokuapp.com/#
 
 **Api Endpoints**
-* **Get all notes (GET): '/api/notes'**
-* **Get note by id (GET): '/api/notes/:id'**
-* **Add new note (POST): '/api/notes/add'**
-* **Update note by id (PUT): '/api/notes/:id'**
-* **Delete note by id (DELETE): '/api/notes/:id'**
+* **Get all notes(Suports query string) (GET): '/api/notes/:start?/:limit?/:order?'**
+* **Get note by id (GET): '/api/note/:id'**
+* **Add new note (POST): '/api/note/add'**
+* **Update note by id (PUT): '/api/note/:id'**
+* **Delete note by id (DELETE): '/api/note/:id'**

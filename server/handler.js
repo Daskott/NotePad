@@ -6,7 +6,34 @@ var Note = models.Note;
  */
 var handler = {
     getAllNotes: (request, response) => {
-        Note.findAll({order: [['id','DESC']]})
+
+        // get query string if any
+        const queryString = require('query-string');
+        var paramsArray = request.url.split('?');
+        var params = "?";
+        if(paramsArray.length >= 2){
+            for(var i = 1; i < paramsArray.length; i++){
+                params+=paramsArray[i];
+            }
+        }
+        
+        const query = queryString.parse(params);
+        var order = request.params.order || query.order || "DESC";
+        var limit = parseInt(request.params.limit) || parseInt(query.limit) || null;
+        var start = parseInt(request.params.start) || parseInt(query.start) || 0;
+
+        
+        // validate order
+        if(order && !(order.toString().toUpperCase() === "DESC" || order.toString().toUpperCase() === "ASC") )
+            order = "DESC";
+
+        // validate limit
+        if(limit && !Number.isInteger(limit)) limit = null;
+
+        // validate start
+        if(start && !Number.isInteger(start)) start = 0;
+
+        Note.findAll({order: [['id', order]], offset: start, limit: limit})
         .then(notes => {
             return response.status(200).json({success:true, data:notes});
         })
