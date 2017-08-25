@@ -33,6 +33,10 @@ $ mysql> create database notepad_development;
 ```
   npm install
 ```
+* Build project
+```
+  npm run build
+```
 
 ## Start web server
 * From your terminal 
