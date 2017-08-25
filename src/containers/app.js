@@ -28,14 +28,13 @@ class Application extends Component{
       this.addNewNote = this.addNewNote.bind(this);
   }
 
-  componentDidMount(){
-    const {dispatch} = this.props;
-    const setNotes = bindActionCreators(NoteActionCreators.setNotes, dispatch);    
+  componentDidMount(){    
     /**
      * - get Notes from database
      * - initialiaze component with retrieved notes
      */
     var self = this;
+    const {setNotes} = this.props;
     axios.get('/api/notes')
     .then(function (response) {
         var notes = [{id:1, content:""}]
@@ -50,19 +49,17 @@ class Application extends Component{
 
   onSelectedNoteChanged = (index, selectedContent) =>{
     var totalNotes = this.props.notes.length;
-    const notes = this.props.notes;
     if(totalNotes <=  0)return;
     this.setState({ selectedIndex: index, textAreaContent: selectedContent});
   }
 
   onTextAreaChange = event =>{
-    const {dispatch} = this.props;
     const self = this;
-    const updateNoteContent = bindActionCreators(NoteActionCreators.updateNoteContent, dispatch);
+    const {updateNoteContent, notes} = this.props;
     const selectedIndex = this.state.selectedIndex;
-    if(this.props.notes.length <=  0)return;
+    if(notes.length <=  0)return;
 
-    var updatedNote = this.props.notes[selectedIndex];
+    var updatedNote = notes[selectedIndex];
     updatedNote.content = event.target.value;
     
     /**
@@ -86,8 +83,7 @@ class Application extends Component{
   }
 
   addNewNote(){
-    const {dispatch, notes} = this.props;
-    const addNote = bindActionCreators(NoteActionCreators.addNote, dispatch);
+    const {addNote, notes} = this.props;
     const len = notes.length;
     var self = this;
     
@@ -118,9 +114,8 @@ class Application extends Component{
   }
   
   deleteSelectedNote(){
-    var self = this;
-    const {dispatch} = this.props;
-    const deleteNote = bindActionCreators(NoteActionCreators.deleteNote, dispatch);
+    const {deleteNote, notes} = this.props;
+    const self = this;
     var selectedIndex = this.state.selectedIndex;
 
     if(selectedIndex < 0)return;
@@ -129,7 +124,7 @@ class Application extends Component{
      * - delete selected note using api call,
      * - then update application state
      */
-    const selectedNoteId = this.props.notes[selectedIndex].id;
+    const selectedNoteId = notes[selectedIndex].id;
     axios.delete('/api/note/'+selectedNoteId)
     .then(function (response) {
         if(!response.data.success)return;
@@ -140,7 +135,7 @@ class Application extends Component{
         deleteNote(selectedIndex);
 
         // set next selected index
-        var totalNotes = self.props.notes.length;
+        var totalNotes = notes.length;
         if(selectedIndex >= totalNotes && totalNotes > 0)
           selectedIndex-=1;
         else if(totalNotes < 1)
@@ -152,7 +147,7 @@ class Application extends Component{
          */
         var text = "";
         if(totalNotes > 0)
-          text = self.props.notes[selectedIndex].content;
+          text = notes[selectedIndex].content;
         self.setState({selectedIndex: selectedIndex, textAreaContent: text});
     })
     .catch(function (error) {
@@ -215,4 +210,20 @@ class Application extends Component{
 }
 
 const mapStateToProps = state =>({notes: state});
-export default connect(mapStateToProps)(Application);
+const mapDispatchToProps = dispatch => {
+  return {
+    setNotes: notes => {
+      dispatch(NoteActionCreators.setNotes(notes))
+    },
+    addNote: (id, content) => {
+      dispatch(NoteActionCreators.addNote(id, content))
+    },
+    updateNoteContent: (selectedIndex, content) =>{
+      dispatch(NoteActionCreators.updateNoteContent(selectedIndex, content));
+    },
+    deleteNote: (selectedIndex) =>{
+      dispatch(NoteActionCreators.deleteNote(selectedIndex));
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Application);
