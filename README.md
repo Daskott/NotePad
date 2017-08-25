@@ -1,4 +1,4 @@
-#Note Pad
+# Note Pad
 
 A simple note pad application built with: 
 * es6 (use babel)
@@ -13,14 +13,14 @@ A simple note pad application built with:
 
 And then deployed to Heroku: https://notepad-101.herokuapp.com/#
 
-**Api Endpoints**
+## Api Endpoints
 * **Get all notes(supports query string) (GET): '/api/notes/:start?/:limit?/:order?'**
 * **Get note by id (GET): '/api/note/:id'**
 * **Add new note (POST): '/api/note/add'**
 * **Update note by id (PUT): '/api/note/:id'**
 * **Delete note by id (DELETE): '/api/note/:id'**
 
-##Setup
+## Setup
 * Create a DB with the name "notepad_development"
 ```
 $ mysql> create database notepad_development;
