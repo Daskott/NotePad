@@ -127,6 +127,11 @@ textarea{
   outline: 0;  
 }
 
+.disabled-textArea{
+  background-color: #eee;
+  color: #212121;
+  font-size: 1.5em;
+}
 /* ================================================
   React Css Transition Group
 * ================================================ */

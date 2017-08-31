@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import * as NoteActionCreators from '../actions/note';
 import Note from '../components/Note';
 import Toolbar from '../components/Toolbar';
@@ -167,6 +166,22 @@ class Application extends Component{
           onToggle={this.onSelectedNoteChanged}/>
     ), this);
 
+    let textArea = null;
+    if(this.props.notes.length > 0){
+      textArea = (
+        <textarea 
+                className="text-content" 
+                placeholder={"Add Note"}
+                value={this.state.textAreaContent}
+                onChange={this.onTextAreaChange}>
+      </textarea>)
+    } else{
+      textArea = (
+        <textArea className="text-content disabled-textArea" disabled={true}>
+          &#8598; Create your first Note :)
+        </textArea>)
+    }
+
     return(
       <div className="margin-top-3x">
         <div className="header">
@@ -192,13 +207,7 @@ class Application extends Component{
 
             {/* TextArea */}
             <div className="SplitPane-right">
-              <textarea 
-                        className="text-content" 
-                        disabled={this.props.notes.length <= 0? true : false}
-                        placeholder={this.props.notes.length <= 0? "Create your first Note :)" : "Add Note"}
-                        value={this.state.textAreaContent}
-                        onChange={this.onTextAreaChange}>
-              </textarea>
+              {textArea}
             </div>
           </div>
 

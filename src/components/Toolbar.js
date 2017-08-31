@@ -14,8 +14,8 @@ const Toolbar = props =>{
 
     return(
       <div className="toolbar margin-default padding-default"> 
-        <button type="button" className="add-btn btn btn-default glyphicon glyphicon-edit margin-right" onClick={addNewNote}></button>
-        <button type="button" className="delete-btn btn btn-default glyphicon glyphicon-trash margin-right" onClick={deleteNote}></button>
+        <button type="button" title="New note" className="add-btn btn btn-default glyphicon glyphicon-edit margin-right" onClick={addNewNote}></button>
+        <button type="button" title="Delete note" className="delete-btn btn btn-default glyphicon glyphicon-trash margin-right" onClick={deleteNote}></button>
         <span>{props.savingNoteIndicator}</span>
       </div>
     );
